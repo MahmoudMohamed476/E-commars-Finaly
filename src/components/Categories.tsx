@@ -29,7 +29,7 @@ const categoryList = [
 export default function Categories({ onSelect }: { onSelect: (name: string) => void }) {
   return (
     <section className="bg-white py-6">
-      <div className="mx-auto max-w-[1500px] px-4">
+      <div className="mx-auto max-w-375 px-4">
         <h2 className="mb-4 font-display text-xl font-bold text-[#0F1111]">
           Shop by Category
         </h2>

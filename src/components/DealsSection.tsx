@@ -57,7 +57,7 @@ export default function DealsSection({
 
   return (
     <section className="py-6">
-      <div className="mx-auto max-w-[1500px] px-4">
+      <div className="mx-auto max-w-375 px-4">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-4">
             <h2 className="font-display text-xl font-bold text-[#0F1111]">

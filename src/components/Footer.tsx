@@ -37,7 +37,7 @@ export default function Footer() {
         Back to top
       </div>
 
-      <div className="mx-auto max-w-[1500px] px-8 py-10">
+      <div className="mx-auto max-w-375 px-8 py-10">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
@@ -61,7 +61,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-[1500px] flex-col items-center justify-between gap-3 px-8 py-5 md:flex-row">
+        <div className="mx-auto flex max-w-375 flex-col items-center justify-between gap-3 px-8 py-5 md:flex-row">
           <span className="font-display text-xl font-extrabold text-white">
             shop<span className="text-[#FF9900]">now</span>
           </span>

@@ -73,7 +73,7 @@ export default function Hero() {
             }}
           />
           <div className="absolute inset-0 flex items-center">
-            <div className="mx-auto w-full max-w-[1500px] px-8">
+            <div className="mx-auto w-full max-w-375 px-8">
               <div className="max-w-lg">
                 <span className="mb-3 inline-block rounded bg-[#FF9900] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#131921]">
                   {slide.badge}

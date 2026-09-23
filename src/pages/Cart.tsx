@@ -32,7 +32,7 @@ export default function Cart() {
   const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_RATE
 
   return (
-    <div className="mx-auto max-w-[1500px] px-4 py-5 sm:px-6">
+    <div className="mx-auto max-w-375 px-4 py-5 sm:px-6">
       <h1 className="font-display text-2xl font-bold text-[#0F1111]">
         Shopping Cart
       </h1>

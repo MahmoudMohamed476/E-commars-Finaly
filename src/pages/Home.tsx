@@ -62,7 +62,7 @@ export default function Home() {
       {!isFiltering && (
         <>
           <Hero />
-          <div className="relative z-10 mx-auto -mt-6 max-w-[1500px] px-4">
+          <div className="relative z-10 mx-auto -mt-6 max-w-375 px-4">
             <div className="mb-3 grid grid-cols-2 gap-3 md:grid-cols-4">
               {quickCards.map((card, i) => (
                 <div
@@ -97,17 +97,17 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mx-auto max-w-[1500px] px-4">
+          <div className="mx-auto max-w-375 px-4">
             <Categories onSelect={selectCategory} />
           </div>
-          <div className="mx-auto max-w-[1500px] px-4">
+          <div className="mx-auto max-w-375 px-4">
             <DealsSection onAdd={addToCart} />
           </div>
         </>
       )}
 
       <section ref={gridRef} className="py-6" style={{ scrollMarginTop: '140px' }}>
-        <div className="mx-auto max-w-[1500px] px-4">
+        <div className="mx-auto max-w-375 px-4">
           <div className="mb-4 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {allCategories.map((cat) => (
               <button

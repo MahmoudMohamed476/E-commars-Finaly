@@ -111,7 +111,7 @@ export default function Checkout() {
   const labelClass = 'mb-1.5 block text-sm font-medium text-[#0F1111]'
 
   return (
-    <div className="mx-auto max-w-[1500px] px-4 py-5 sm:px-6">
+    <div className="mx-auto max-w-375 px-4 py-5 sm:px-6">
       <h1 className="font-display text-2xl font-bold text-[#0F1111]">Checkout</h1>
 
       <form
@@ -187,14 +187,14 @@ export default function Checkout() {
               {['Credit / Debit card', 'PayPal', 'Cash on delivery'].map((m) => (
                 <label
                   key={m}
-                  className="flex cursor-pointer items-center gap-3 rounded-lg border border-[#DDD] p-3.5 text-sm font-medium text-slate-800 has-checked:border-[#FF9900] has-checked:bg-[#FFF7E6]"
+                  className="flex cursor-pointer items-center gap-3 rounded-lg border border-[#DDD] p-3.5 text-sm font-medium text-slate-800 has-checked:border-orange has-checked:bg-[#FFF7E6]"
                 >
                   <input
                     type="radio"
                     name="payment"
                     value={m}
                     defaultChecked={m === 'Credit / Debit card'}
-                    className="accent-[#FF9900]"
+                    className="accent-orange"
                   />
                   {m}
                 </label>
