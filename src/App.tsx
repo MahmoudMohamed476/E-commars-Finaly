@@ -14,7 +14,7 @@ function Layout() {
   const { isCartOpen, closeCart } = useCart()
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#EAEDED]">
+    <div className="flex min-h-screen flex-col bg-surface">
       <Navbar />
       <CartDrawer open={isCartOpen} onClose={closeCart} />
       <main className="flex-1">
