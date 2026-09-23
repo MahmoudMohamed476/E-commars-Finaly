@@ -75,17 +75,17 @@ export default function Hero() {
           <div className="absolute inset-0 flex items-center">
             <div className="mx-auto w-full max-w-375 px-8">
               <div className="max-w-lg">
-                <span className="mb-3 inline-block rounded bg-[#FF9900] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#131921]">
+                <span className="mb-3 inline-block rounded bg-orange px-3 py-1 text-xs font-bold uppercase tracking-wide text-navy">
                   {slide.badge}
                 </span>
                 <h2 className="mb-1 font-display text-4xl font-extrabold leading-tight text-white md:text-5xl">
                   {slide.title}
                 </h2>
-                <p className="mb-2 font-display text-xl font-semibold text-[#FF9900]">
+                <p className="mb-2 font-display text-xl font-semibold text-orange">
                   {slide.subtitle}
                 </p>
                 <p className="mb-6 text-base text-white/80">{slide.description}</p>
-                <button className="rounded bg-[#FF9900] px-8 py-3 font-display text-base font-bold text-[#131921] shadow-lg transition-colors hover:bg-[#E47911]">
+                <button className="rounded bg-orange px-8 py-3 font-display text-base font-bold text-navy shadow-lg transition-colors hover:bg-orange-dark">
                   {slide.cta}
                 </button>
               </div>
@@ -116,7 +116,7 @@ export default function Hero() {
             onClick={() => setCurrent(i)}
             aria-label={`Slide ${i + 1}`}
             className={`rounded-full transition-all duration-300 ${
-              i === current ? 'h-2 w-6 bg-[#FF9900]' : 'h-2 w-2 bg-white/60'
+              i === current ? 'h-2 w-6 bg-orange' : 'h-2 w-2 bg-white/60'
             }`}
           />
         ))}

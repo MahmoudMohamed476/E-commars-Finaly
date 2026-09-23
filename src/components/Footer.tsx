@@ -29,9 +29,9 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="mt-8 bg-[#232F3E] text-white">
+    <footer className="mt-8 bg-navy-mid text-white">
       <div
-        className="cursor-pointer bg-[#37475A] py-3 text-center text-sm transition-colors hover:bg-[#485769]"
+        className="cursor-pointer bg-navy-light py-3 text-center text-sm transition-colors hover:bg-[#485769]"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         Back to top
@@ -63,7 +63,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-375 flex-col items-center justify-between gap-3 px-8 py-5 md:flex-row">
           <span className="font-display text-xl font-extrabold text-white">
-            shop<span className="text-[#FF9900]">now</span>
+            shop<span className="text-orange">now</span>
           </span>
           <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-[#999]">
             <a

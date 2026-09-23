@@ -39,7 +39,7 @@ export default function Login() {
     return (
       <div className="mx-auto max-w-md px-4 py-16 text-center">
         <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
-          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#FFF7E6] border-2 border-[#FFB700]">
+          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#FFF7E6] border-2 border-orange-light">
             {user.avatar ? (
               <img
                 src={user.avatar}
@@ -59,7 +59,7 @@ export default function Login() {
           <div className="mt-8 space-y-3">
             <Link
               to={from}
-              className="block w-full rounded-xl bg-[#FF9900] py-3 font-semibold text-white shadow-sm transition hover:bg-[#E47911]"
+              className="block w-full rounded-xl bg-orange py-3 font-semibold text-white shadow-sm transition hover:bg-orange-dark"
             >
               Continue Shopping
             </Link>
@@ -174,7 +174,7 @@ export default function Login() {
           </Link>
 
           <div className="mt-4 flex justify-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FF9900] text-white shadow-lg shadow-[#FFB700]/40">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange text-white shadow-lg shadow-orange-light/40">
               <ShoppingBag className="h-6 w-6" />
             </div>
           </div>
@@ -196,7 +196,7 @@ export default function Login() {
               type="button"
               onClick={handleDemoLogin}
               disabled={loading}
-              className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-[#FFB700] bg-[#FFF7E6]/70 px-4 py-2.5 text-sm font-semibold text-[#B12704] transition hover:bg-[#FFF3D6]/70"
+              className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-orange-light bg-[#FFF7E6]/70 px-4 py-2.5 text-sm font-semibold text-[#B12704] transition hover:bg-[#FFF3D6]/70"
             >
               <Sparkles className="h-4 w-4 text-[#007185] transition group-hover:rotate-12" />
               1-Click Demo Account Login
@@ -314,7 +314,7 @@ export default function Login() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Jane Doe"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-[#FF9900] focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
                   />
                 </div>
               </div>
@@ -332,7 +332,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-[#FF9900] focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
                 />
               </div>
             </div>
@@ -363,7 +363,7 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-[#FF9900] focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
                 />
                 <button
                   type="button"
@@ -393,7 +393,7 @@ export default function Login() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-[#FF9900] focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
                   />
                 </div>
               </div>
@@ -406,7 +406,7 @@ export default function Login() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-300 text-[#007185] focus:ring-[#FF9900]"
+                  className="h-4 w-4 rounded border-slate-300 text-[#007185] focus:ring-orange"
                 />
                 <label
                   htmlFor="remember-me"
@@ -432,7 +432,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-6 flex w-full items-center justify-center rounded-xl bg-[#FF9900] py-3 text-sm font-semibold text-white shadow-md shadow-[#FFB700]/30 transition hover:bg-[#E47911] disabled:opacity-60"
+              className="mt-6 flex w-full items-center justify-center rounded-xl bg-orange py-3 text-sm font-semibold text-white shadow-md shadow-orange-light/30 transition hover:bg-orange-dark disabled:opacity-60"
             >
               {loading ? (
                 <div className="flex items-center gap-2">
@@ -503,7 +503,7 @@ export default function Login() {
                   value={forgotEmail}
                   onChange={(e) => setForgotEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-sm outline-none focus:border-[#FF9900] focus:bg-white"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-sm outline-none focus:border-orange focus:bg-white"
                 />
                 <div className="flex gap-2">
                   <button
@@ -515,7 +515,7 @@ export default function Login() {
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 rounded-xl bg-[#FF9900] py-2 text-xs font-semibold text-white hover:bg-[#E47911]"
+                    className="flex-1 rounded-xl bg-orange py-2 text-xs font-semibold text-white hover:bg-orange-dark"
                   >
                     Send Link
                   </button>

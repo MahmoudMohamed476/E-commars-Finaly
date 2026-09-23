@@ -60,7 +60,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 type="button"
                 onClick={this.handleReset}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#FF9900] py-2.5 text-sm font-semibold text-white hover:bg-[#E47911]"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-orange py-2.5 text-sm font-semibold text-white hover:bg-orange-dark"
               >
                 <Home className="h-4 w-4" />
                 Go to Home

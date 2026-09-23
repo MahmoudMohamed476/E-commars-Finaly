@@ -107,7 +107,7 @@ export default function Checkout() {
   }
 
   const inputClass =
-    'w-full rounded-lg border border-[#888C8C] bg-white px-4 py-2.5 text-sm outline-none focus:border-[#FF9900] focus:ring-2 focus:ring-[#FF9900]/30'
+    'w-full rounded-lg border border-[#888C8C] bg-white px-4 py-2.5 text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/30'
   const labelClass = 'mb-1.5 block text-sm font-medium text-[#0F1111]'
 
   return (

@@ -116,7 +116,7 @@ export default function Home() {
                 onClick={() => selectCategory(cat)}
                 className={`flex-shrink-0 whitespace-nowrap rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
                   activeCategory === cat
-                    ? 'border-[#FF9900] bg-[#FF9900] font-semibold text-[#131921]'
+                    ? 'border-orange bg-orange font-semibold text-navy'
                     : 'border-[#DDD] bg-white text-[#0F1111] hover:bg-[#F6F6F6]'
                 }`}
               >

@@ -35,14 +35,14 @@ function Countdown() {
 
   return (
     <div className="flex items-center gap-2 text-white">
-      <Clock size={16} className="text-[#FF9900]" />
+      <Clock size={16} className="text-orange" />
       <span className="text-sm font-medium">Ends in:</span>
       <div className="flex items-center gap-1 font-display text-lg font-bold">
-        <span className="rounded bg-[#131921] px-2 py-0.5">{pad(time.h)}</span>
-        <span className="text-[#FF9900]">:</span>
-        <span className="rounded bg-[#131921] px-2 py-0.5">{pad(time.m)}</span>
-        <span className="text-[#FF9900]">:</span>
-        <span className="rounded bg-[#131921] px-2 py-0.5">{pad(time.s)}</span>
+        <span className="rounded bg-navy px-2 py-0.5">{pad(time.h)}</span>
+        <span className="text-orange">:</span>
+        <span className="rounded bg-navy px-2 py-0.5">{pad(time.m)}</span>
+        <span className="text-orange">:</span>
+        <span className="rounded bg-navy px-2 py-0.5">{pad(time.s)}</span>
       </div>
     </div>
   )

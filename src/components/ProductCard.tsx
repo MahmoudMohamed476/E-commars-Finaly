@@ -13,7 +13,7 @@ function StarRating({ rating, count }: { rating: number; count: number }) {
             size={12}
             className={
               i <= Math.round(rating)
-                ? 'fill-[#FF9900] text-[#FF9900]'
+                ? 'fill-orange text-orange'
                 : 'fill-[#CCC] text-[#CCC]'
             }
           />
