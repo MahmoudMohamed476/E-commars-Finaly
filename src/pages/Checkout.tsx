@@ -21,18 +21,18 @@ export default function Checkout() {
     return (
       <div className="mx-auto max-w-xl px-4 py-24 text-center">
         <CheckCircle2 className="mx-auto h-16 w-16 text-emerald-500" />
-        <h1 className="mt-4 font-display text-2xl font-bold text-[#0F1111]">
+        <h1 className="mt-4 font-display text-2xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">
           Thank you, {order.customerName.split(' ')[0]}!
         </h1>
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-slate-600 dark:text-slate-400">
           Your order <span className="font-semibold">{order.orderId}</span> has
           been placed. A confirmation was sent to {order.email}.
         </p>
-        <div className="mx-auto mt-8 max-w-sm rounded border border-[#DDD] bg-white p-6 text-left text-sm">
-          <h2 className="font-bold text-[#0F1111]">Order Summary</h2>
+        <div className="mx-auto mt-8 max-w-sm rounded border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark p-6 text-left text-sm">
+          <h2 className="font-bold text-[#0F1111] dark:text-[#E7E9EA]">Order Summary</h2>
           <ul className="mt-3 space-y-1.5">
             {order.items.map((i) => (
-              <li key={i.product.id} className="flex justify-between text-slate-600">
+              <li key={i.product.id} className="flex justify-between text-slate-600 dark:text-slate-400">
                 <span>
                   {i.product.title} × {i.quantity}
                 </span>
@@ -49,7 +49,7 @@ export default function Checkout() {
               <dt>Shipping</dt>
               <dd>{formatPrice(order.shipping)}</dd>
             </div>
-            <div className="flex justify-between font-bold text-[#0F1111]">
+            <div className="flex justify-between font-bold text-[#0F1111] dark:text-[#E7E9EA]">
               <dt>Total</dt>
               <dd>{formatPrice(order.total)}</dd>
             </div>
@@ -57,7 +57,7 @@ export default function Checkout() {
         </div>
         <Link
           to="/"
-          className="mt-8 inline-block rounded-full border border-[#FCD200] bg-[#FFD814] px-6 py-2.5 font-medium text-[#0F1111] transition-colors hover:bg-[#F7CA00]"
+          className="mt-8 inline-block rounded-full border border-[#FCD200] bg-[#FFD814] px-6 py-2.5 font-medium text-navy transition-colors hover:bg-[#F7CA00]"
         >
           Continue shopping
         </Link>
@@ -69,13 +69,13 @@ export default function Checkout() {
     return (
       <div className="mx-auto max-w-3xl px-4 py-24 text-center">
         <ShoppingCart className="mx-auto h-14 w-14 text-slate-300" strokeWidth={1} />
-        <h1 className="mt-4 text-2xl font-bold text-[#0F1111]">
+        <h1 className="mt-4 text-2xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">
           Nothing to check out
         </h1>
-        <p className="mt-2 text-slate-500">Add some products to your cart first.</p>
+        <p className="mt-2 text-slate-500 dark:text-slate-400">Add some products to your cart first.</p>
         <Link
           to="/"
-          className="mt-6 inline-block rounded-full border border-[#FCD200] bg-[#FFD814] px-6 py-2.5 font-medium text-[#0F1111] transition-colors hover:bg-[#F7CA00]"
+          className="mt-6 inline-block rounded-full border border-[#FCD200] bg-[#FFD814] px-6 py-2.5 font-medium text-navy transition-colors hover:bg-[#F7CA00]"
         >
           Start shopping
         </Link>
@@ -107,26 +107,26 @@ export default function Checkout() {
   }
 
   const inputClass =
-    'w-full rounded-lg border border-[#888C8C] bg-white px-4 py-2.5 text-sm outline-none focus:border-orange focus:ring-2 focus:ring-orange/30'
-  const labelClass = 'mb-1.5 block text-sm font-medium text-[#0F1111]'
+    'w-full rounded-lg border border-[#888C8C] bg-white px-4 py-2.5 text-sm outline-none dark:bg-surface-dark focus:border-orange focus:ring-2 focus:ring-orange/30'
+  const labelClass = 'mb-1.5 block text-sm font-medium text-[#0F1111] dark:text-[#E7E9EA]'
 
   return (
     <div className="mx-auto max-w-375 px-4 py-5 sm:px-6">
-      <h1 className="font-display text-2xl font-bold text-[#0F1111]">Checkout</h1>
+      <h1 className="font-display text-2xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">Checkout</h1>
 
       <form
         onSubmit={handleSubmit}
         className="mt-5 flex flex-col gap-8 lg:flex-row"
       >
         <div className="flex-1 space-y-6">
-          <section className="rounded border border-[#DDD] bg-white p-6">
+          <section className="rounded border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark p-6">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="font-bold text-[#0F1111]">Shipping Details</h2>
+              <h2 className="font-bold text-[#0F1111] dark:text-[#E7E9EA]">Shipping Details</h2>
               {!user && (
                 <Link
                   to="/login"
                   state={{ from: { pathname: '/checkout' } }}
-                  className="text-xs font-semibold text-[#007185] hover:text-[#C7511F]"
+                  className="text-xs font-semibold text-[#007185] dark:text-[#52B8E8] hover:text-[#C7511F]"
                 >
                   Already have an account? Sign in
                 </Link>
@@ -181,13 +181,13 @@ export default function Checkout() {
             </div>
           </section>
 
-          <section className="rounded border border-[#DDD] bg-white p-6">
-            <h2 className="mb-4 font-bold text-[#0F1111]">Payment</h2>
+          <section className="rounded border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark p-6">
+            <h2 className="mb-4 font-bold text-[#0F1111] dark:text-[#E7E9EA]">Payment</h2>
             <div className="space-y-2">
               {['Credit / Debit card', 'PayPal', 'Cash on delivery'].map((m) => (
                 <label
                   key={m}
-                  className="flex cursor-pointer items-center gap-3 rounded-lg border border-[#DDD] p-3.5 text-sm font-medium text-slate-800 has-checked:border-orange has-checked:bg-[#FFF7E6]"
+                  className="flex cursor-pointer items-center gap-3 rounded-lg border border-[#DDD] p-3.5 text-sm font-medium text-slate-800 dark:border-[#3A414A] dark:text-slate-200 has-checked:border-orange has-checked:bg-[#FFF7E6] dark:has-checked:bg-orange/15"
                 >
                   <input
                     type="radio"
@@ -203,8 +203,8 @@ export default function Checkout() {
           </section>
         </div>
 
-        <aside className="h-fit w-full rounded border border-[#DDD] bg-white p-6 lg:w-80">
-          <h2 className="mb-4 font-display text-lg font-bold text-[#0F1111]">
+        <aside className="h-fit w-full rounded border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark p-6 lg:w-80">
+          <h2 className="mb-4 font-display text-lg font-bold text-[#0F1111] dark:text-[#E7E9EA]">
             Order Summary
           </h2>
           <ul className="mt-4 max-h-60 space-y-3 overflow-y-auto pr-1 text-sm">
@@ -218,7 +218,7 @@ export default function Checkout() {
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="line-clamp-1 font-medium text-slate-800">
+                  <p className="line-clamp-1 font-medium text-slate-800 dark:text-slate-200">
                     {product.title}
                   </p>
                   <p className="text-slate-400">× {quantity}</p>
@@ -231,25 +231,25 @@ export default function Checkout() {
           </ul>
           <dl className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-sm">
             <div className="flex justify-between">
-              <dt className="text-slate-500">Subtotal</dt>
-              <dd className="font-medium text-[#0F1111]">
+              <dt className="text-slate-500 dark:text-slate-400">Subtotal</dt>
+              <dd className="font-medium text-[#0F1111] dark:text-[#E7E9EA]">
                 {formatPrice(subtotal)}
               </dd>
             </div>
             <div className="flex justify-between">
-              <dt className="text-slate-500">Shipping</dt>
-              <dd className="font-medium text-[#0F1111]">
+              <dt className="text-slate-500 dark:text-slate-400">Shipping</dt>
+              <dd className="font-medium text-[#0F1111] dark:text-[#E7E9EA]">
                 {shipping === 0 ? 'Free' : formatPrice(shipping)}
               </dd>
             </div>
             <div className="flex justify-between border-t border-slate-100 pt-3 text-base">
-              <dt className="font-semibold text-[#0F1111]">Total</dt>
-              <dd className="font-bold text-[#0F1111]">{formatPrice(total)}</dd>
+              <dt className="font-semibold text-[#0F1111] dark:text-[#E7E9EA]">Total</dt>
+              <dd className="font-bold text-[#0F1111] dark:text-[#E7E9EA]">{formatPrice(total)}</dd>
             </div>
           </dl>
           <button
             type="submit"
-            className="mt-5 w-full rounded-full border border-[#FCD200] bg-[#FFD814] py-3 font-medium text-[#0F1111] transition-colors hover:bg-[#F7CA00]"
+            className="mt-5 w-full rounded-full border border-[#FCD200] bg-[#FFD814] py-3 font-medium text-navy transition-colors hover:bg-[#F7CA00]"
           >
             Place Order
           </button>

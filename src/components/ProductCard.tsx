@@ -19,7 +19,7 @@ function StarRating({ rating, count }: { rating: number; count: number }) {
           />
         ))}
       </div>
-      <span className="text-xs text-[#007185]">{count.toLocaleString()}</span>
+      <span className="text-xs text-[#007185] dark:text-[#52B8E8]">{count.toLocaleString()}</span>
     </div>
   )
 }
@@ -41,11 +41,11 @@ export default function ProductCard({
   onAdd: (product: Product) => void
 }) {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded border border-[#DDD] bg-white transition-shadow duration-200 hover:shadow-md">
+    <div className="group relative flex flex-col overflow-hidden rounded border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark transition-shadow duration-200 hover:shadow-md">
       <button
         type="button"
         aria-label="Add to wishlist"
-        className="absolute right-2 top-2 z-10 rounded-full bg-white p-1.5 opacity-0 shadow transition-opacity group-hover:opacity-100 hover:text-red-500"
+        className="absolute right-2 top-2 z-10 rounded-full bg-white p-1.5 opacity-0 dark:bg-surface-dark shadow transition-opacity group-hover:opacity-100 hover:text-red-500"
       >
         <Heart size={16} className="text-[#555]" />
       </button>
@@ -79,7 +79,7 @@ export default function ProductCard({
       <div className="flex flex-1 flex-col gap-1.5 p-3">
         <Link
           to={`/product/${product.id}`}
-          className="line-clamp-2 text-sm leading-snug text-[#0F1111] hover:text-[#C7511F]"
+          className="line-clamp-2 text-sm leading-snug text-[#0F1111] dark:text-[#E7E9EA] hover:text-[#C7511F]"
         >
           {product.title}
         </Link>
@@ -87,7 +87,7 @@ export default function ProductCard({
         <StarRating rating={product.rating} count={product.reviewCount} />
 
         <div className="flex flex-wrap items-baseline gap-2">
-          <span className="text-lg font-bold text-[#0F1111]">
+          <span className="text-lg font-bold text-[#0F1111] dark:text-[#E7E9EA]">
             {formatPrice(product.price)}
           </span>
           {product.originalPrice && (
@@ -108,7 +108,7 @@ export default function ProductCard({
           type="button"
           onClick={() => onAdd(product)}
           disabled={!product.inStock}
-          className="mt-auto flex w-full items-center justify-center gap-2 rounded-full border border-[#FCD200] bg-[#FFD814] py-2 text-sm font-medium text-[#0F1111] transition-colors hover:bg-[#F7CA00] disabled:cursor-not-allowed disabled:opacity-50"
+          className="mt-auto flex w-full items-center justify-center gap-2 rounded-full border border-[#FCD200] bg-[#FFD814] py-2 text-sm font-medium text-navy transition-colors hover:bg-[#F7CA00] disabled:cursor-not-allowed disabled:opacity-50"
         >
           <ShoppingCart size={15} />
           Add to Cart

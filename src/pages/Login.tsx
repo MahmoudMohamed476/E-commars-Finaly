@@ -38,8 +38,8 @@ export default function Login() {
   if (user) {
     return (
       <div className="mx-auto max-w-md px-4 py-16 text-center">
-        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
-          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#FFF7E6] border-2 border-orange-light">
+        <div className="rounded-3xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-surface-dark p-8 shadow-xl">
+          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#FFF7E6] dark:bg-white/10 border-2 border-orange-light">
             {user.avatar ? (
               <img
                 src={user.avatar}
@@ -47,14 +47,14 @@ export default function Login() {
                 className="h-full w-full rounded-full object-cover"
               />
             ) : (
-              <UserIcon className="h-10 w-10 text-[#007185]" />
+              <UserIcon className="h-10 w-10 text-[#007185] dark:text-[#52B8E8]" />
             )}
           </div>
           <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
             <Check className="h-3.5 w-3.5" /> Logged In
           </span>
-          <h1 className="mt-3 text-2xl font-bold text-slate-900">{user.name}</h1>
-          <p className="text-sm text-slate-500">{user.email}</p>
+          <h1 className="mt-3 text-2xl font-bold text-slate-900 dark:text-white">{user.name}</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{user.email}</p>
 
           <div className="mt-8 space-y-3">
             <Link
@@ -66,7 +66,7 @@ export default function Login() {
             <button
               type="button"
               onClick={logout}
-              className="block w-full rounded-xl border border-slate-200 py-3 font-medium text-slate-600 transition hover:bg-slate-50 hover:text-rose-600"
+              className="block w-full rounded-xl border border-slate-200 dark:border-slate-700 py-3 font-medium text-slate-600 dark:text-slate-400 transition hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-rose-600"
             >
               Sign Out
             </button>
@@ -168,7 +168,7 @@ export default function Login() {
         <div className="text-center">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-[#007185] transition"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-[#007185] dark:text-[#52B8E8] transition"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Store
           </Link>
@@ -178,10 +178,10 @@ export default function Login() {
               <ShoppingBag className="h-6 w-6" />
             </div>
           </div>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900">
+          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             {mode === 'signin' ? 'Welcome back' : 'Create your account'}
           </h2>
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
             {mode === 'signin'
               ? 'Enter your credentials to access your account & orders'
               : 'Sign up to track orders, save favorites, and check out faster'}
@@ -189,16 +189,16 @@ export default function Login() {
         </div>
 
         {/* Card Container */}
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
+        <div className="rounded-3xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-surface-dark p-6 shadow-xl sm:p-8">
           {/* Quick Demo Button */}
           <div className="mb-6">
             <button
               type="button"
               onClick={handleDemoLogin}
               disabled={loading}
-              className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-orange-light bg-[#FFF7E6]/70 px-4 py-2.5 text-sm font-semibold text-[#B12704] transition hover:bg-[#FFF3D6]/70"
+              className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-orange-light bg-[#FFF7E6]/70 px-4 py-2.5 text-sm font-semibold text-[#B12704] dark:bg-white/10 dark:text-[#FFB4A2] transition hover:bg-[#FFF3D6]/70 dark:hover:bg-white/20"
             >
-              <Sparkles className="h-4 w-4 text-[#007185] transition group-hover:rotate-12" />
+              <Sparkles className="h-4 w-4 text-[#007185] dark:text-[#52B8E8] transition group-hover:rotate-12" />
               1-Click Demo Account Login
             </button>
           </div>
@@ -209,7 +209,7 @@ export default function Login() {
               type="button"
               onClick={() => handleSocialLogin('Google')}
               disabled={loading}
-              className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-2.5 px-4 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 hover:border-slate-300 disabled:opacity-60"
+              className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-2.5 px-4 text-sm font-medium text-slate-700 dark:border-slate-700 dark:bg-surface-dark dark:text-slate-300 shadow-sm transition hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 disabled:opacity-60"
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24">
                 <path
@@ -236,9 +236,9 @@ export default function Login() {
               type="button"
               onClick={() => handleSocialLogin('GitHub')}
               disabled={loading}
-              className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-2.5 px-4 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 hover:border-slate-300 disabled:opacity-60"
+              className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-2.5 px-4 text-sm font-medium text-slate-700 dark:border-slate-700 dark:bg-surface-dark dark:text-slate-300 shadow-sm transition hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 disabled:opacity-60"
             >
-              <svg className="h-4 w-4 fill-current text-slate-900" viewBox="0 0 24 24">
+              <svg className="h-4 w-4 fill-current text-slate-900 dark:text-white" viewBox="0 0 24 24">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -251,10 +251,10 @@ export default function Login() {
 
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200" />
+              <div className="w-full border-t border-slate-200 dark:border-slate-700" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-slate-400 font-medium">
+              <span className="bg-white px-2 text-slate-400 dark:bg-surface-dark dark:text-slate-500 font-medium">
                 Or continue with email
               </span>
             </div>
@@ -270,8 +270,8 @@ export default function Login() {
               }}
               className={`flex-1 rounded-lg py-2 text-center text-sm font-semibold transition ${
                 mode === 'signin'
-                  ? 'bg-white text-slate-900 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-900'
+                  ? 'bg-white text-slate-900 shadow-sm dark:bg-surface-dark dark:text-white'
+                  : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Sign In
@@ -284,8 +284,8 @@ export default function Login() {
               }}
               className={`flex-1 rounded-lg py-2 text-center text-sm font-semibold transition ${
                 mode === 'signup'
-                  ? 'bg-white text-slate-900 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-900'
+                  ? 'bg-white text-slate-900 shadow-sm dark:bg-surface-dark dark:text-white'
+                  : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Create Account
@@ -303,7 +303,7 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {mode === 'signup' && (
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">
                   Full Name
                 </label>
                 <div className="relative">
@@ -314,14 +314,14 @@ export default function Login() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Jane Doe"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition dark:border-slate-700 dark:bg-[#1E242B] dark:text-[#E7E9EA] focus:border-orange focus:bg-white dark:focus:bg-[#2A323C] focus:ring-2 focus:ring-[#FFE6B3]"
                   />
                 </div>
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">
                 Email Address
               </label>
               <div className="relative">
@@ -332,14 +332,14 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition dark:border-slate-700 dark:bg-[#1E242B] dark:text-[#E7E9EA] focus:border-orange focus:bg-white dark:focus:bg-[#2A323C] focus:ring-2 focus:ring-[#FFE6B3]"
                 />
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                   Password
                 </label>
                 {mode === 'signin' && (
@@ -349,7 +349,7 @@ export default function Login() {
                       setForgotEmail(email)
                       setShowForgotModal(true)
                     }}
-                    className="text-xs font-medium text-[#007185] hover:text-[#B12704]"
+                    className="text-xs font-medium text-[#007185] dark:text-[#52B8E8] hover:text-[#B12704]"
                   >
                     Forgot password?
                   </button>
@@ -363,12 +363,12 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-10 text-sm outline-none transition dark:border-slate-700 dark:bg-[#1E242B] dark:text-[#E7E9EA] focus:border-orange focus:bg-white dark:focus:bg-[#2A323C] focus:ring-2 focus:ring-[#FFE6B3]"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600"
+                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 dark:text-slate-400"
                   tabIndex={-1}
                 >
                   {showPassword ? (
@@ -382,7 +382,7 @@ export default function Login() {
 
             {mode === 'signup' && (
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1">
                   Confirm Password
                 </label>
                 <div className="relative">
@@ -393,7 +393,7 @@ export default function Login() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-orange focus:bg-white focus:ring-2 focus:ring-[#FFE6B3]"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-4 text-sm outline-none transition dark:border-slate-700 dark:bg-[#1E242B] dark:text-[#E7E9EA] focus:border-orange focus:bg-white dark:focus:bg-[#2A323C] focus:ring-2 focus:ring-[#FFE6B3]"
                   />
                 </div>
               </div>
@@ -406,23 +406,23 @@ export default function Login() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-300 text-[#007185] focus:ring-orange"
+                  className="h-4 w-4 rounded border-slate-300 dark:border-slate-600 text-[#007185] dark:text-[#52B8E8] focus:ring-orange"
                 />
                 <label
                   htmlFor="remember-me"
-                  className="ml-2 block text-xs font-medium text-slate-600"
+                  className="ml-2 block text-xs font-medium text-slate-600 dark:text-slate-400"
                 >
                   Remember my session for 30 days
                 </label>
               </div>
             ) : (
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 By creating an account, you agree to our{' '}
-                <span className="text-[#007185] underline cursor-pointer">
+                <span className="text-[#007185] dark:text-[#52B8E8] underline cursor-pointer">
                   Terms of Service
                 </span>{' '}
                 and{' '}
-                <span className="text-[#007185] underline cursor-pointer">
+                <span className="text-[#007185] dark:text-[#52B8E8] underline cursor-pointer">
                   Privacy Policy
                 </span>
                 .
@@ -449,7 +449,7 @@ export default function Login() {
         </div>
 
         {/* Footer Toggle Text */}
-        <p className="text-center text-xs text-slate-500">
+        <p className="text-center text-xs text-slate-500 dark:text-slate-400">
           {mode === 'signin' ? (
             <>
               Don't have an account yet?{' '}
@@ -459,7 +459,7 @@ export default function Login() {
                   setMode('signup')
                   setError(null)
                 }}
-                className="font-semibold text-[#007185] hover:text-[#B12704]"
+                className="font-semibold text-[#007185] dark:text-[#52B8E8] hover:text-[#B12704]"
               >
                 Sign up for free
               </button>
@@ -473,7 +473,7 @@ export default function Login() {
                   setMode('signin')
                   setError(null)
                 }}
-                className="font-semibold text-[#007185] hover:text-[#B12704]"
+                className="font-semibold text-[#007185] dark:text-[#52B8E8] hover:text-[#B12704]"
               >
                 Sign in here
               </button>
@@ -485,9 +485,9 @@ export default function Login() {
       {/* Forgot Password Modal */}
       {showForgotModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-xs">
-          <div className="w-full max-w-sm rounded-3xl bg-white p-6 shadow-2xl">
-            <h3 className="text-lg font-bold text-slate-900">Reset Password</h3>
-            <p className="mt-1 text-xs text-slate-500">
+          <div className="w-full max-w-sm rounded-3xl bg-white dark:bg-surface-dark p-6 shadow-2xl">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Reset Password</h3>
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
               Enter your email and we'll send you instructions to reset your password.
             </p>
 
@@ -503,13 +503,13 @@ export default function Login() {
                   value={forgotEmail}
                   onChange={(e) => setForgotEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-sm outline-none focus:border-orange focus:bg-white"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-sm outline-none dark:border-slate-700 dark:bg-[#1E242B] dark:text-[#E7E9EA] focus:border-orange focus:bg-white dark:focus:bg-[#2A323C]"
                 />
                 <div className="flex gap-2">
                   <button
                     type="button"
                     onClick={() => setShowForgotModal(false)}
-                    className="flex-1 rounded-xl border border-slate-200 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                    className="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 py-2 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
                   >
                     Cancel
                   </button>

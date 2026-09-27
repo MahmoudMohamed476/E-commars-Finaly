@@ -32,8 +32,8 @@ export default function ProductDetail() {
   if (!product) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-24 text-center">
-        <h1 className="text-2xl font-bold text-[#0F1111]">Product not found</h1>
-        <Link to="/" className="mt-4 inline-block text-[#007185] hover:text-[#C7511F] hover:underline">
+        <h1 className="text-2xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">Product not found</h1>
+        <Link to="/" className="mt-4 inline-block text-[#007185] dark:text-[#52B8E8] hover:text-[#C7511F] hover:underline">
           Back to shop
         </Link>
       </div>
@@ -49,7 +49,7 @@ export default function ProductDetail() {
       <Breadcrumbs category={product.category} title={product.title} />
 
       <div className="mt-4 grid gap-8 lg:grid-cols-2">
-        <div className="flex items-center justify-center rounded border border-[#DDD] bg-white p-6">
+        <div className="flex items-center justify-center rounded border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark p-6">
           <img
             src={product.image}
             alt={product.title}
@@ -65,22 +65,22 @@ export default function ProductDetail() {
               </span>
             )}
           </div>
-          <h1 className="mt-2 text-2xl font-medium leading-tight text-[#0F1111]">
+          <h1 className="mt-2 text-2xl font-medium leading-tight text-[#0F1111] dark:text-[#E7E9EA]">
             {product.title}
           </h1>
           <div className="mt-2 flex items-center gap-2 text-sm">
-            <span className="flex items-center gap-1 font-semibold text-[#007185]">
+            <span className="flex items-center gap-1 font-semibold text-[#007185] dark:text-[#52B8E8]">
               {product.rating} <span className="text-amber-500">★</span>
             </span>
             <span className="text-slate-400">·</span>
-            <span className="text-[#007185] hover:text-[#C7511F]">
+            <span className="text-[#007185] dark:text-[#52B8E8] hover:text-[#C7511F]">
               {product.reviewCount.toLocaleString()} ratings
             </span>
           </div>
 
-          <div className="mt-3 rounded border border-[#DDD] bg-white p-4">
+          <div className="mt-3 rounded border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark p-4">
             <div className="flex items-baseline gap-3">
-              <span className="text-4xl font-medium text-[#0F1111]">
+              <span className="text-4xl font-medium text-[#0F1111] dark:text-[#E7E9EA]">
                 {formatPrice(product.price)}
               </span>
               {product.originalPrice && (
@@ -100,7 +100,7 @@ export default function ProductDetail() {
                 <Link
                   to="/login"
                   state={{ from: { pathname: window.location.pathname } }}
-                  className="font-semibold text-[#007185] hover:text-[#C7511F] hover:underline"
+                  className="font-semibold text-[#007185] dark:text-[#52B8E8] hover:text-[#C7511F] hover:underline"
                 >
                   Sign in
                 </Link>{' '}
@@ -109,11 +109,11 @@ export default function ProductDetail() {
             )}
           </div>
 
-          <p className="mt-4 leading-relaxed text-[#0F1111]">{product.description}</p>
+          <p className="mt-4 leading-relaxed text-[#0F1111] dark:text-[#E7E9EA]">{product.description}</p>
 
           <ul className="mt-4 space-y-2">
             {product.features.map((f) => (
-              <li key={f} className="flex items-center gap-2 text-sm text-slate-700">
+              <li key={f} className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                 <Check className="h-4 w-4 text-emerald-500" /> {f}
               </li>
             ))}
@@ -142,7 +142,7 @@ export default function ProductDetail() {
                     <ChevronDown size={14} />
                   </button>
                   {qtyOpen && (
-                    <div className="absolute top-full left-0 z-10 mt-1 max-h-48 w-16 overflow-y-auto rounded-lg border border-[#DDD] bg-white shadow-lg">
+                    <div className="absolute top-full left-0 z-10 mt-1 max-h-48 w-16 overflow-y-auto rounded-lg border border-[#DDD] bg-white dark:border-[#3A414A] dark:bg-surface-dark shadow-lg">
                       {Array.from({ length: Math.min(product.stockCount, 10) }, (_, i) => i + 1).map(
                         (n) => (
                           <button
@@ -171,7 +171,7 @@ export default function ProductDetail() {
                   addToCart(product, quantity)
                   openCart()
                 }}
-                className="flex-1 rounded-full border border-[#FCD200] bg-[#FFD814] px-6 py-2.5 font-medium text-[#0F1111] transition-colors hover:bg-[#F7CA00] disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none"
+                className="flex-1 rounded-full border border-[#FCD200] bg-[#FFD814] px-6 py-2.5 font-medium text-navy transition-colors hover:bg-[#F7CA00] disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none"
               >
                 <span className="inline-flex items-center gap-2">
                   <ShoppingCart className="h-5 w-5" /> Add to Cart
@@ -186,7 +186,7 @@ export default function ProductDetail() {
                 addToCart(product, quantity)
                 openCart()
               }}
-              className="mt-2 w-full rounded-full border border-[#FBD815] bg-[#FFA41C] px-6 py-2.5 font-medium text-[#0F1111] transition-colors hover:bg-[#FA8900] disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-2 w-full rounded-full border border-[#FBD815] bg-[#FFA41C] px-6 py-2.5 font-medium text-navy transition-colors hover:bg-[#FA8900] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Buy Now
             </button>
@@ -196,7 +196,7 @@ export default function ProductDetail() {
 
       {related.length > 0 && (
         <section className="mt-16">
-          <h2 className="mb-4 font-display text-xl font-bold text-[#0F1111]">
+          <h2 className="mb-4 font-display text-xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">
             Products related to this item
           </h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">

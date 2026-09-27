@@ -60,7 +60,7 @@ export default function DealsSection({
       <div className="mx-auto max-w-375 px-4">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-4">
-            <h2 className="font-display text-xl font-bold text-[#0F1111]">
+            <h2 className="font-display text-xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">
               Today's Deals
             </h2>
             <Countdown />

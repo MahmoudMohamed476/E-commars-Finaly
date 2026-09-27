@@ -6,14 +6,17 @@ import {
   MapPin,
   Menu,
   Minus,
+  Moon,
   Plus,
   Search,
   ShoppingCart,
+  Sun,
   Trash2,
   X,
 } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 import { formatPrice } from '../utils/format'
 
 const FREE_SHIPPING_THRESHOLD = 75
@@ -48,11 +51,11 @@ export function CartDrawer({
         onClick={onClose}
       />
       <aside
-        className={`absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white shadow-2xl transition-transform duration-300 ${
+        className={`absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-white dark:bg-surface-dark shadow-2xl transition-transform duration-300 ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between border-b border-[#DDD] px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[#DDD] dark:border-[#3A414A] px-5 py-4">
           <h2 className="flex items-center gap-2 text-lg font-bold text-navy">
             <ShoppingCart className="h-5 w-5" />
             Cart ({count} {count === 1 ? 'item' : 'items'})
@@ -60,7 +63,7 @@ export function CartDrawer({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full p-1.5 text-slate-500 hover:bg-[#F6F6F6]"
+            className="rounded-full p-1.5 text-slate-500 dark:text-slate-400 hover:bg-[#F6F6F6] dark:hover:bg-[#2A323C]"
             aria-label="Close cart"
           >
             <X className="h-5 w-5" />
@@ -70,8 +73,8 @@ export function CartDrawer({
         {items.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-2 px-6 text-center">
             <ShoppingCart className="h-12 w-12 text-slate-300" strokeWidth={1} />
-            <p className="font-medium text-slate-700">Your cart is empty</p>
-            <p className="text-sm text-slate-500">
+            <p className="font-medium text-slate-700 dark:text-slate-300">Your cart is empty</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               Add some products to get started.
             </p>
           </div>
@@ -91,7 +94,7 @@ export function CartDrawer({
               {items.map(({ product, quantity }) => (
                 <li
                   key={product.id}
-                  className="flex gap-3 border-b border-slate-100 py-3 last:border-0"
+                  className="flex gap-3 border-b border-slate-100 dark:border-slate-800 py-3 last:border-0"
                 >
                   <Link to={`/product/${product.id}`} onClick={onClose}>
                     <div className="h-20 w-20 overflow-hidden rounded bg-[#F6F6F6]">
@@ -110,14 +113,14 @@ export function CartDrawer({
                     >
                       {product.title}
                     </Link>
-                    <span className="mt-1 text-sm text-slate-500">
+                    <span className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                       {formatPrice(product.price)}
                     </span>
                     <div className="mt-auto flex items-center justify-between pt-1">
                       <div className="flex items-center overflow-hidden rounded border border-[#CCC]">
                         <button
                           type="button"
-                          className="p-1.5 text-slate-500 hover:bg-[#F6F6F6]"
+                          className="p-1.5 text-slate-500 dark:text-slate-400 hover:bg-[#F6F6F6] dark:hover:bg-[#2A323C]"
                           onClick={() => updateQuantity(product.id, quantity - 1)}
                           aria-label="Decrease quantity"
                         >
@@ -128,7 +131,7 @@ export function CartDrawer({
                         </span>
                         <button
                           type="button"
-                          className="p-1.5 text-slate-500 hover:bg-[#F6F6F6]"
+                          className="p-1.5 text-slate-500 dark:text-slate-400 hover:bg-[#F6F6F6] dark:hover:bg-[#2A323C]"
                           onClick={() => updateQuantity(product.id, quantity + 1)}
                           aria-label="Increase quantity"
                         >
@@ -152,9 +155,9 @@ export function CartDrawer({
               ))}
             </ul>
 
-            <div className="border-t border-[#DDD] px-5 py-4">
+            <div className="border-t border-[#DDD] dark:border-[#3A414A] px-5 py-4">
               <div className="mb-3 flex justify-between text-base">
-                <span className="text-slate-700">Subtotal ({count} items):</span>
+                <span className="text-slate-700 dark:text-slate-300">Subtotal ({count} items):</span>
                 <span className="font-bold text-slate-900">
                   {formatPrice(subtotal)}
                 </span>
@@ -162,14 +165,14 @@ export function CartDrawer({
               <Link
                 to="/checkout"
                 onClick={onClose}
-                className="flex w-full items-center justify-center rounded-full bg-[#FFD814] px-4 py-2.5 text-center font-semibold text-[#0F1111] border border-[#FCD200] hover:bg-[#F7CA00]"
+                className="flex w-full items-center justify-center rounded-full bg-[#FFD814] px-4 py-2.5 text-center font-semibold text-navy border border-[#FCD200] hover:bg-[#F7CA00]"
               >
                 Proceed to Checkout
               </Link>
               <Link
                 to="/cart"
                 onClick={onClose}
-                className="mt-2 flex w-full items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-center text-sm font-medium text-slate-800 hover:bg-slate-50"
+                className="mt-2 flex w-full items-center justify-center rounded-full border border-slate-300 dark:border-slate-600 px-4 py-2 text-center text-sm font-medium text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-[#2A323C]"
               >
                 View Cart
               </Link>
@@ -184,6 +187,7 @@ export function CartDrawer({
 export default function Navbar() {
   const { count, openCart } = useCart()
   const { user, logout } = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [userMenuOpen, setUserMenuOpen] = useState(false)
@@ -253,7 +257,7 @@ export default function Navbar() {
                 name="q"
                 defaultValue=""
                 placeholder="Search ShopNow"
-                className="min-w-0 flex-1 px-4 py-2.5 text-sm text-navy bg-white outline-none"
+                className="min-w-0 flex-1 px-4 py-2.5 text-sm text-navy bg-white outline-none dark:bg-[#2A323C] dark:text-white dark:placeholder:text-slate-400"
               />
               <button
                 type="submit"
@@ -282,15 +286,15 @@ export default function Navbar() {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-1 w-60 rounded-lg border border-[#DDD] bg-white p-2 shadow-xl z-50">
-                    <div className="border-b border-slate-100 px-3 py-2">
+                  <div className="absolute right-0 mt-1 w-60 rounded-lg border border-[#DDD] dark:border-[#3A414A] bg-white dark:bg-surface-dark p-2 shadow-xl z-50">
+                    <div className="border-b border-slate-100 dark:border-slate-800 px-3 py-2">
                       <p className="text-[10px] font-semibold tracking-wider text-slate-400 uppercase">
                         Signed in as
                       </p>
-                      <p className="truncate text-sm font-bold text-[#0F1111]">
+                      <p className="truncate text-sm font-bold text-[#0F1111] dark:text-[#E7E9EA]">
                         {user.name}
                       </p>
-                      <p className="truncate text-xs text-slate-500">
+                      <p className="truncate text-xs text-slate-500 dark:text-slate-400">
                         {user.email}
                       </p>
                     </div>
@@ -298,13 +302,13 @@ export default function Navbar() {
                       <Link
                         to="/cart"
                         onClick={() => setUserMenuOpen(false)}
-                        className="flex items-center gap-2 rounded px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-50"
+                        className="flex items-center gap-2 rounded px-3 py-2 text-sm text-slate-700 dark:text-slate-300 transition hover:bg-slate-50 dark:hover:bg-[#2A323C]"
                       >
                         <ShoppingCart className="h-4 w-4 text-slate-400" />
                         <span>My Cart ({count})</span>
                       </Link>
                     </div>
-                    <div className="border-t border-slate-100 pt-1">
+                    <div className="border-t border-slate-100 dark:border-slate-800 pt-1">
                       <button
                         type="button"
                         onClick={() => {
@@ -346,6 +350,15 @@ export default function Navbar() {
 
             <button
               type="button"
+              onClick={toggleTheme}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="rounded border border-transparent p-2 text-white transition-colors hover:border-white"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
+            <button
+              type="button"
               onClick={openCart}
               aria-label={`Open cart with ${count} items`}
               className="relative flex items-end gap-1 rounded border border-transparent px-2 py-1 transition-colors hover:border-white"
@@ -380,7 +393,7 @@ export default function Navbar() {
               type="text"
               name="q"
               placeholder="Search ShopNow"
-              className="flex-1 bg-white px-4 py-2 text-sm text-navy outline-none"
+              className="flex-1 bg-white px-4 py-2 text-sm text-navy outline-none dark:bg-[#2A323C] dark:text-white dark:placeholder:text-slate-400"
             />
             <button type="submit" aria-label="Search" className="bg-orange px-4">
               <Search size={18} className="text-navy" />
@@ -397,7 +410,7 @@ export default function Navbar() {
                 key={link}
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                className="shrink-0 whitespace-nowrap rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-white/10"
+                className="shrink-0 whitespace-nowrap rounded px-3 py-2 text-sm font-medium transition-colors hover:bg-white dark:bg-surface-dark/10"
               >
                 {link}
               </a>
@@ -405,7 +418,7 @@ export default function Navbar() {
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
-              className="shrink-0 whitespace-nowrap rounded px-3 py-2 text-sm font-medium text-orange transition-colors hover:bg-white/10"
+              className="shrink-0 whitespace-nowrap rounded px-3 py-2 text-sm font-medium text-orange transition-colors hover:bg-white dark:bg-surface-dark/10"
             >
               Prime Video
             </a>

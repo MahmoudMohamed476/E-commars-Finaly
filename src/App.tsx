@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { CartProvider, useCart } from './context/CartContext'
 import { AuthProvider } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import Navbar, { CartDrawer } from './components/Navbar'
 import Footer from './components/Footer'
@@ -35,13 +36,15 @@ function Layout() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter>
-        <AuthProvider>
-          <CartProvider>
-            <Layout />
-          </CartProvider>
-        </AuthProvider>
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <AuthProvider>
+            <CartProvider>
+              <Layout />
+            </CartProvider>
+          </AuthProvider>
+        </BrowserRouter>
+      </ThemeProvider>
     </ErrorBoundary>
   )
 }

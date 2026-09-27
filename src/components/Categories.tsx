@@ -28,9 +28,9 @@ const categoryList = [
 
 export default function Categories({ onSelect }: { onSelect: (name: string) => void }) {
   return (
-    <section className="bg-white py-6">
+    <section className="bg-white py-6 dark:bg-surface-dark">
       <div className="mx-auto max-w-375 px-4">
-        <h2 className="mb-4 font-display text-xl font-bold text-[#0F1111]">
+        <h2 className="mb-4 font-display text-xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">
           Shop by Category
         </h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -49,7 +49,7 @@ export default function Categories({ onSelect }: { onSelect: (name: string) => v
                   loading="lazy"
                 />
               </div>
-              <span className="text-xs font-medium leading-tight text-[#0F1111] group-hover:text-[#C7511F]">
+              <span className="text-xs font-medium leading-tight text-[#0F1111] dark:text-[#E7E9EA] group-hover:text-[#C7511F]">
                 {cat.name}
               </span>
             </button>

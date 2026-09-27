@@ -67,11 +67,11 @@ export default function Home() {
               {quickCards.map((card, i) => (
                 <div
                   key={i}
-                  className={`cursor-pointer rounded bg-white p-4 shadow-sm transition-shadow hover:shadow-md ${
+                  className={`cursor-pointer rounded bg-white p-4 shadow-sm dark:bg-surface-dark dark:shadow-none transition-shadow hover:shadow-md ${
                     card.img ? '' : 'flex flex-col'
                   }`}
                 >
-                  <h3 className="mb-2 font-display text-sm font-bold leading-tight text-[#0F1111]">
+                  <h3 className="mb-2 font-display text-sm font-bold leading-tight text-[#0F1111] dark:text-[#E7E9EA]">
                     {card.title}
                   </h3>
                   {card.img && (
@@ -83,12 +83,12 @@ export default function Home() {
                   )}
                   {card.cta.startsWith('Sign in') ? (
                     <>
-                      <div className="mt-auto rounded-full bg-[#FFD814] border border-[#FCD200] py-1 text-center text-xs font-medium text-[#0F1111]">
+                      <div className="mt-auto rounded-full bg-[#FFD814] border border-[#FCD200] py-1 text-center text-xs font-medium text-navy">
                         Sign in
                       </div>
                     </>
                   ) : (
-                    <span className="text-xs font-medium text-[#007185] hover:text-[#C7511F]">
+                    <span className="text-xs font-medium text-[#007185] dark:text-[#52B8E8] hover:text-[#C7511F]">
                       {card.cta}
                     </span>
                   )}
@@ -117,7 +117,7 @@ export default function Home() {
                 className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
                   activeCategory === cat
                     ? 'border-orange bg-orange font-semibold text-navy'
-                    : 'border-[#DDD] bg-white text-[#0F1111] hover:bg-[#F6F6F6]'
+                    : 'border-[#DDD] bg-white text-[#0F1111] dark:border-[#3A414A] dark:bg-surface-dark dark:text-[#E7E9EA] hover:bg-[#F6F6F6] dark:hover:bg-[#2A323C]'
                 }`}
               >
                 {cat}
@@ -126,7 +126,7 @@ export default function Home() {
           </div>
 
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="font-display text-xl font-bold text-[#0F1111]">
+            <h2 className="font-display text-xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">
               {query
                 ? `Results for "${query}"`
                 : activeCategory !== 'All'
@@ -140,7 +140,7 @@ export default function Home() {
 
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 text-center">
-              <p className="mb-2 font-display text-2xl font-bold text-[#0F1111]">
+              <p className="mb-2 font-display text-2xl font-bold text-[#0F1111] dark:text-[#E7E9EA]">
                 No results found
               </p>
               <p className="mb-4 text-[#555]">Try different keywords or browse our categories</p>
@@ -150,7 +150,7 @@ export default function Home() {
                   setActiveCategory('All')
                   navigate('/')
                 }}
-                className="rounded-full bg-[#FFD814] border border-[#FCD200] px-6 py-2 font-medium text-[#0F1111] transition-colors hover:bg-[#F7CA00]"
+                className="rounded-full bg-[#FFD814] border border-[#FCD200] px-6 py-2 font-medium text-navy transition-colors hover:bg-[#F7CA00]"
               >
                 Browse All Products
               </button>
