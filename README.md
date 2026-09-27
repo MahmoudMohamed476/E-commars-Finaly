@@ -8,6 +8,7 @@ An Amazon-style e-commerce web application built with **React 19**, **TypeScript
 - **Search & category filtering** — search is done from the header (`/?q=...`) and matches title, description, features, and tags; category chips filter by department
 - **Product catalog** — 12 seeded products with ratings, review counts, discount badges, and out-of-stock handling
 - **Product detail page** — breadcrumbs, price/discount block, feature list, quantity selector, Add to Cart / Buy Now, related products
+- **Dark mode** — moon/sun toggle in the header, persists to `localStorage`, defaults to OS preference, full dark palette across every page
 - **Cart** — slide-out cart drawer (opens on add) plus a full `/cart` page with quantity controls and free-shipping progress ($75 threshold)
 - **Checkout** — shipping + payment form, order summary, mock order confirmation (no real payments)
 - **Auth** — sign in / create account with persisted session (`localStorage`), account menu in the header, demo + social login buttons
@@ -45,7 +46,9 @@ src/
 ├── context/
 │   ├── CartContext.tsx   # Cart state + localStorage persistence
 │   │                     # (tested in CartContext.test.tsx)
-│   └── AuthContext.tsx   # User session state + localStorage persistence
+│   ├── AuthContext.tsx   # User session state + localStorage persistence
+│   └── ThemeContext.tsx  # Dark mode state + localStorage persistence
+│                         # (tested in ThemeContext.test.tsx)
 ├── data/
 │   └── products.ts       # Product/category seed data (tested)
 ├── pages/
@@ -77,11 +80,11 @@ Defined as Tailwind v4 `@theme` tokens in `src/index.css`:
 - `--color-navy` `#131921` — main header
 - `--color-navy-mid` `#232F3E` — secondary nav + footer
 - `--color-orange` `#FF9900` — accent, search button
+- `--color-surface` `#EAEDED` — page background (dark mode: `#0F1111`)
 - Yellow buttons `#FFD814`, red sale badges `#CC0C39`, price-blue links `#007185`
 - Fonts: **Outfit** (display/headings, `font-display`) + **Inter** (body)
-- Surface background `#EAEDED`
 
-Use tokens like `bg-navy`, `text-orange`, `font-display` in JSX instead of hardcoding hex (arbitrary values `bg-[#...]` are reserved for colors outside the theme).
+Use tokens like `bg-navy`, `text-orange`, `font-display` in JSX instead of hardcoding hex (arbitrary values `bg-[#...]` are reserved for colors outside the theme). Dark mode is class-based: `ThemeContext` toggles `.dark` on `<html>` and every light surface uses a `dark:` variant.
 
 ## Running the Project
 
@@ -95,7 +98,7 @@ npm run preview    # serve the production build
 ## Tests
 
 ```bash
-npm test           # run the suite once (18 tests across 5 files)
+npm test           # run the suite once (20 tests across 6 files)
 npm run test:watch # watch mode
 npx vitest -t "<name>"  # filter by test name
 ```
@@ -103,6 +106,7 @@ npx vitest -t "<name>"  # filter by test name
 - `format.test.ts` — price formatting
 - `products.test.ts` — data integrity (unique ids, sane prices, category mapping, stock consistency)
 - `CartContext.test.tsx` — cart add/merge/remove/update, subtotal, count, persistence
+- `ThemeContext.test.tsx` — dark-mode toggle flips the `.dark` class and persists, restores saved theme
 - `Home.test.tsx` — section rendering, search results, no-results state, category filtering
 - `App.test.tsx` — full-tree render + opening the cart drawer via "Add to Cart"
 
