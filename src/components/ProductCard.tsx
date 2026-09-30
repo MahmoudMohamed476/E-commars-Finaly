@@ -104,6 +104,12 @@ export default function ProductCard({
           {product.inStock ? 'FREE delivery' : 'Out of stock'}
         </span>
 
+        {product.serialNumber && (
+          <span className="text-xs text-[#007185] dark:text-[#52B8E8]">
+            Serial No. {product.serialNumber}
+          </span>
+        )}
+
         <button
           type="button"
           onClick={() => onAdd(product)}
