@@ -1,26 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap");
+@import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
 @theme {
-  --font-display: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
 
   --color-navy: #131921;
-  --color-navy-mid: #232F3E;
-  --color-navy-light: #37475A;
-  --color-orange: #FF9900;
-  --color-orange-light: #FFB700;
-  --color-orange-dark: #E47911;
-  --color-surface: #EAEDED;
-  --color-surface-dark: #D5D9D9;
+  --color-navy-mid: #232f3e;
+  --color-navy-light: #37475a;
+  --color-orange: #ff9900;
+  --color-orange-light: #ffb700;
+  --color-orange-dark: #e47911;
+  --color-surface: #eaeded;
+  --color-surface-dark: #d5d9d9;
 }
 
 .dark {
   color-scheme: dark;
-  --color-surface: #0F1111;
-  --color-surface-dark: #1E242B;
+  --color-surface: #0f1111;
+  --color-surface-dark: #1e242b;
 }
 
 * {
@@ -28,7 +35,7 @@
 }
 
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
