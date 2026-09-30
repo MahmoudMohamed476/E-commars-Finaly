@@ -168,7 +168,7 @@ export default function Login() {
         <div className="text-center">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-[#007185] dark:text-[#52B8E8] transition"
+          className="h-4 w-4 rounded border-slate-300 dark:border-slate-600 text-[#007185] dark:text-[#52B8E8] focus:ring-orange"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Store
           </Link>
