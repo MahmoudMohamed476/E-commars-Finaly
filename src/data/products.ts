@@ -13,6 +13,7 @@ const imgs: Record<string, string> = {
   vacuum: 'https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&h=600&fit=crop&auto=format',
   backpack: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop&auto=format',
   skincare: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=600&fit=crop&auto=format',
+  camera: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=600&fit=crop&auto=format',
 }
 const img = (seed: string) => imgs[seed]
 
@@ -287,6 +288,30 @@ export const products: Product[] = [
       'Fragrance free',
     ],
     tags: ['skincare', 'serum', 'travel', 'beauty'],
+  },
+  {
+    id: 13,
+    title: '4K Mirrorless Camera',
+    price: 549.99,
+    originalPrice: 699.99,
+    rating: 4.7,
+    reviewCount: 892,
+    category: 'Electronics',
+    description:
+      'Compact mirrorless camera with 24MP sensor, 4K/30fps video, flip-out touchscreen and dual-band Wi-Fi. Perfect for vlogging and travel photography.',
+    image: img('camera'),
+    badge: 'Hot',
+    inStock: true,
+    stockCount: 14,
+    features: [
+      '24MP APS-C sensor',
+      '4K video at 30fps',
+      'Flip-out touchscreen',
+      'Dual-band Wi-Fi',
+      'Lightweight body',
+    ],
+    tags: ['camera', 'photography', '4k', 'vlog'],
+    serialNumber: 'SMN-4K-88421',
   },
 ]
 
