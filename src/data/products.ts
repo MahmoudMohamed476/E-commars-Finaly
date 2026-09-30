@@ -311,7 +311,6 @@ export const products: Product[] = [
       'Lightweight body',
     ],
     tags: ['camera', 'photography', '4k', 'vlog'],
-    serialNumber: 'SMN-4K-88421',
   },
 ]
 

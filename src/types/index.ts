@@ -13,7 +13,6 @@ export interface Product {
   stockCount: number
   features: string[]
   tags: string[]
-  serialNumber?: string
 }
 
 export interface CartItem {
