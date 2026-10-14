@@ -10,9 +10,10 @@ An Amazon-style e-commerce web application built with **React 19**, **TypeScript
 - **Product detail page** — breadcrumbs, price/discount block, feature list, quantity selector, Add to Cart / Buy Now, related products
 - **Dark mode** — moon/sun toggle in the header, persists to `localStorage`, defaults to OS preference, full dark palette across every page
 - **Cart** — slide-out cart drawer (opens on add) plus a full `/cart` page with quantity controls and free-shipping progress ($75 threshold)
-- **Checkout** — shipping + payment form, order summary, mock order confirmation (no real payments)
-- **Auth** — sign in / create account with persisted session (`localStorage`), account menu in the header, demo + social login buttons
-- **Persistence** — cart and user session survive page reloads via `localStorage`
+- **Checkout** — shipping + payment form, order summary, mock order confirmation (no real payments); orders are saved to Supabase for signed-in users
+- **Auth** — sign in / create account with persisted session; uses **Supabase Auth** when keys are configured, otherwise falls back to a local demo session (`localStorage`), with an account menu in the header and demo + social login buttons
+- **Persistence** — cart survives page reloads via `localStorage`; user session and orders persist through Supabase (demo session persists via `localStorage`)
+- **Products from the database** — the catalog is seeded from Supabase when configured and falls back to the built-in seed data (`src/data/products.ts`) otherwise
 
 ## Tech Stack
 
@@ -23,6 +24,7 @@ An Amazon-style e-commerce web application built with **React 19**, **TypeScript
 | Build     | Vite 8                                                        |
 | Styling   | Tailwind CSS v4 (theme tokens in `src/index.css`)             |
 | Icons     | `lucide-react`                                                |
+| Backend   | Supabase (Postgres + Auth) — optional, see below              |
 | Tests     | Vitest 5 + Testing Library + jsdom                            |
 | Lint      | oxlint                                                        |
 | Format    | oxfmt                                                         |
@@ -46,11 +48,15 @@ src/
 ├── context/
 │   ├── CartContext.tsx   # Cart state + localStorage persistence
 │   │                     # (tested in CartContext.test.tsx)
-│   ├── AuthContext.tsx   # User session state + localStorage persistence
+│   ├── AuthContext.tsx   # Supabase Auth (or demo fallback) session state
+│   ├── ProductsContext.tsx # Loads catalog from Supabase, seed fallback
 │   └── ThemeContext.tsx  # Dark mode state + localStorage persistence
 │                         # (tested in ThemeContext.test.tsx)
+├── lib/
+│   ├── supabase.ts       # Supabase client from env vars (null if unset)
+│   └── orders.ts         # saveOrder() → inserts into the orders table
 ├── data/
-│   └── products.ts       # Product/category seed data (tested)
+│   └── products.ts       # Product/category seed data (tested) + DB fallback
 ├── pages/
 │   ├── Home.tsx          # Hero, deals, category grid, filtered product grid
 │   ├── ProductDetail.tsx # Single product view + related items
@@ -86,6 +92,27 @@ Defined as Tailwind v4 `@theme` tokens in `src/index.css`:
 
 Use tokens like `bg-navy`, `text-orange`, `font-display` in JSX instead of hardcoding hex (arbitrary values `bg-[#...]` are reserved for colors outside the theme). Dark mode is class-based: `ThemeContext` toggles `.dark` on `<html>` and every light surface uses a `dark:` variant.
 
+## Supabase Setup
+
+The app runs **without** Supabase (it uses the built-in seed data and demo auth). To enable real auth, order storage, and database-backed products:
+
+1. Create a project at [supabase.com](https://supabase.com).
+2. In the Supabase **SQL Editor**, run [`supabase/schema.sql`](supabase/schema.sql). It creates the `products` and `orders` tables, sets row-level security (catalog is public-read; orders are per-user), and seeds the 13 products.
+3. Copy your project URL and **anon public** key (Project Settings → API).
+4. Create a `.env` file in the project root (see `.env.example`):
+
+   ```bash
+   VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+   VITE_SUPABASE_ANON_KEY=your-anon-public-key
+   ```
+
+5. Restart `npm run dev`.
+
+Notes:
+- Only the **anon public** key goes in the frontend — never the `service_role` key. Access is enforced by the RLS policies in the schema.
+- If email confirmation is on (default), a new sign-up won't get a session until the user confirms their email. Turn it off in Authentication → Providers for local testing.
+- With Supabase keys present, the "demo" and "social" buttons attempt real sign-in and will only work for accounts that exist in your project.
+
 ## Running the Project
 
 ```bash
@@ -95,10 +122,12 @@ npm run build      # typecheck + production build → dist/
 npm run preview    # serve the production build
 ```
 
+Optional: copy `.env.example` to `.env` and fill in your Supabase keys (see [Supabase Setup](#supabase-setup)).
+
 ## Tests
 
 ```bash
-npm test           # run the suite once (20 tests across 6 files)
+npm test           # run the suite once (22 tests across 7 files)
 npm run test:watch # watch mode
 npx vitest -t "<name>"  # filter by test name
 ```
@@ -106,6 +135,7 @@ npx vitest -t "<name>"  # filter by test name
 - `format.test.ts` — price formatting
 - `products.test.ts` — data integrity (unique ids, sane prices, category mapping, stock consistency)
 - `CartContext.test.tsx` — cart add/merge/remove/update, subtotal, count, persistence
+- `ProductsContext.test.tsx` — seed-data fallback when Supabase is not configured, getProduct by id
 - `ThemeContext.test.tsx` — dark-mode toggle flips the `.dark` class and persists, restores saved theme
 - `Home.test.tsx` — section rendering, search results, no-results state, category filtering
 - `App.test.tsx` — full-tree render + opening the cart drawer via "Add to Cart"
@@ -123,5 +153,6 @@ npx vitest -t "<name>"  # filter by test name
 
 ## Notes
 
-- Checkout and auth are **mock/demo** — no real payment or backend.
+- Runs fully client-side with no backend by default (seed data + demo auth + `localStorage` cart). Add Supabase keys to enable real auth, orders, and database products — see [Supabase Setup](#supabase-setup).
+- Checkout still processes **no real payments** — order records are just stored.
 - Product images load from Unsplash; the app needs internet access for them to appear.

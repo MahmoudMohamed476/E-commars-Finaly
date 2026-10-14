@@ -5,7 +5,7 @@ import ProductCard from '../components/ProductCard'
 import Hero from '../components/Hero'
 import Categories from '../components/Categories'
 import DealsSection from '../components/DealsSection'
-import { categories, products } from '../data/products'
+import { useProducts } from '../context/ProductsContext'
 
 const quickCards = [
   { title: 'Sign in for the best experience', cta: 'Sign in securely →' },
@@ -32,6 +32,7 @@ export default function Home() {
   const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState('All')
   const { addToCart, openCart } = useCart()
+  const { products, categories } = useProducts()
   const gridRef = useRef<HTMLDivElement>(null)
 
   const allCategories = ['All', ...categories]
@@ -48,7 +49,7 @@ export default function Home() {
         p.tags.some((t) => t.includes(q))
       return matchesCategory && matchesQuery
     })
-  }, [query, activeCategory])
+  }, [query, activeCategory, products])
 
   const isFiltering = !!query || activeCategory !== 'All'
 

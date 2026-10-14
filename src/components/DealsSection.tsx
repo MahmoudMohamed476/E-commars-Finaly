@@ -1,13 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { Clock } from "lucide-react";
-import { products } from "../data/products";
+import { useProducts } from "../context/ProductsContext";
 import type { Product } from "../types";
 import ProductCard from "./ProductCard";
 
 const DURATION = 6 * 60 * 60; 
 const DEALS_PER_PAGE = 6;
-
-const allDeals = products.filter((p) => p.originalPrice);
 
 
 const getRound = (now: number) => Math.floor(now / (DURATION * 1000));
@@ -27,7 +25,7 @@ function seededRandom(seed: number) {
 }
 
 
-function pickDeals(round: number): Product[] {
+function pickDeals(allDeals: Product[], round: number): Product[] {
   const rand = seededRandom(round);
   const arr = [...allDeals];
   for (let i = arr.length - 1; i > 0; i--) {
@@ -64,6 +62,7 @@ export default function DealsSection({
   onAdd: (product: Product) => void;
 }) {
   const [now, setNow] = useState(() => Date.now());
+  const { products } = useProducts();
 
 
   useEffect(() => {
@@ -75,7 +74,10 @@ export default function DealsSection({
   const seconds = getSecondsLeft(now);
 
 
-  const deals = useMemo(() => pickDeals(round), [round]);
+  const deals = useMemo(
+    () => pickDeals(products.filter((p) => p.originalPrice), round),
+    [products, round],
+  );
 
   return (
     <section className="py-6">

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Check, ChevronDown, ShoppingCart } from 'lucide-react'
-import { getProduct, products } from '../data/products'
 import { useCart } from '../context/CartContext'
 import ProductCard from '../components/ProductCard'
 import { useAuth } from '../context/AuthContext'
+import { useProducts } from '../context/ProductsContext'
 import { formatPrice } from '../utils/format'
 
 function Breadcrumbs({ category, title }: { category: string; title: string }) {
@@ -23,6 +23,7 @@ function Breadcrumbs({ category, title }: { category: string; title: string }) {
 
 export default function ProductDetail() {
   const { id } = useParams()
+  const { getProduct, products } = useProducts()
   const product = getProduct(Number(id))
   const { addToCart, openCart } = useCart()
   const { user } = useAuth()

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { CheckCircle2, ShoppingCart } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
+import { saveOrder } from '../lib/orders'
+import { isSupabaseConfigured } from '../lib/supabase'
 import { formatPrice } from '../utils/format'
 import type { OrderDetails } from '../types'
 
@@ -83,11 +85,11 @@ export default function Checkout() {
     )
   }
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = new FormData(e.currentTarget)
     const orderId = `SH-${Date.now().toString(36).toUpperCase()}`
-    setOrder({
+    const newOrder: OrderDetails = {
       orderId,
       customerName: String(form.get('name')),
       email: String(form.get('email')),
@@ -101,7 +103,17 @@ export default function Checkout() {
       shipping,
       total,
       createdAt: new Date().toISOString(),
-    })
+    }
+    // Persist for signed-in users when Supabase is configured. A failed insert
+    // must not block the confirmation the customer already sees.
+    if (isSupabaseConfigured && user) {
+      try {
+        await saveOrder(newOrder, user.id)
+      } catch {
+        // ignored — order still shown locally
+      }
+    }
+    setOrder(newOrder)
     clearCart()
     window.scrollTo(0, 0)
   }
