@@ -1,0 +1,12 @@
+{
+  "name": "software-testing-task1-jasmine",
+  "version": "1.0.0",
+  "description": "Unit and Integration testing with Jasmine - Shopping cart application",
+  "scripts": {
+    "test": "jasmine --config=jasmine.json"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^5.5.0"
+  }
+}
